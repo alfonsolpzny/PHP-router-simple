@@ -1,60 +1,50 @@
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+  header('Location: index');
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Alfonso Lopez">
-    <meta name="generator" content="">
-    <title>Signin</title>
-    <?php include('partials/header.php'); ?>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Alfonso Lopez">
+  <meta name="generator" content="">
+  <title></title>
+  <?php include('partials/header.php'); ?>
 </head>
 
 <body>
-<?php include('partials/ToggleThemeDown.php') ?>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  <?php include('partials/ToggleThemeDown.php') ?>
+  <?php include('partials/navbar.php') ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nesciunt non officia repellat dolorem cumque reprehenderit veritatis? Eum magni, sit fuga dolore odit beatae accusantium omnis ullam iste laboriosam tempora.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit necessitatibus numquam, eius quod earum eos ea? Provident consequatur, similique incidunt dolore sequi sit non ullam harum animi nemo, recusandae voluptatum.
+          Eum minima vel molestiae, aut labore illum deleniti, a iure enim sunt nesciunt ab architecto dignissimos voluptatum sed aliquam ducimus explicabo? Repellendus sunt illo minima natus similique ipsa quas eius!
+          Repellat quis, rerum repellendus optio iusto accusantium. Alias perferendis, accusamus iure sapiente ipsum eum non adipisci autem in illum minus. Qui illo recusandae odio ipsam natus sapiente facilis optio debitis.
+          Ut dolorum praesentium nisi asperiores id. Inventore fuga assumenda corporis id repudiandae quaerat, doloribus, vero dolorem perferendis officiis repellendus dicta natus? Eveniet rerum assumenda, quo et sed libero a nesciunt!
+          Necessitatibus repellat harum quae similique doloribus odio eaque dolores. Saepe ipsam recusandae quia voluptatem consectetur asperiores blanditiis nam, reiciendis fuga sunt iure dignissimos a itaque officia, consequuntur aperiam ad odio!
+        </p>
+      </div>
     </div>
   </div>
-</nav>
 
 
-<?php include('partials/footer.php'); ?>
+
+  <?php include('partials/footer.php'); ?>
 </body>
 
 </html>

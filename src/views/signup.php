@@ -1,24 +1,33 @@
 <?php
 
-
+$error = false;
 
 if (!empty($_POST)) {
     require_once 'MySQLi_db_connection.php';
 
     $username_form = $conn->real_escape_string($_POST["username"]);
     $password_form = $conn->real_escape_string($_POST["password"]);
-    
+
     $passwordHAsh = password_hash($password_form, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users(username, password) VALUES('$username_form', '$passwordHAsh');";
+
+
+    
 
     $sql = "INSERT INTO users(username, password) VALUES(?,?);";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ss', ...[$username_form, $passwordHAsh]);
-    if ($stmt->execute()) {
-        $stmt->store_result();
+    $stmt->bind_param('ss', ...[$username_form, $passwordHAsh]);    
+
+    try {
+        $stmt->execute();
         header('location: /index');
-    } else {
-        echo $conn->error();
+    } catch (Exception $e) {
+        //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+        //echo $stmt->error();        
+        $error = true;
     }
+    
 
     $conn->close();
 }
@@ -46,6 +55,11 @@ if (!empty($_POST)) {
 
     <main class="form-signin w-100 m-auto">
         <a href="/" class="btn btn-lg btn-danger" id="signup">Back</a>
+        <?php if ($error == true) { ?>
+            <div>
+                <p id="error">Error, this user already exist.</p>
+            </div>
+        <?php } ?>
         <form action="<?php $_SERVER["REQUEST_URI"]; ?>" method="post">
             <img class="mb-4" src="/public/icons/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Register your data</h1>

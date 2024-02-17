@@ -1,14 +1,9 @@
 <?php
-//session_start();
-//session_destroy();
-// Redirect to the login page:
 
 session_start();
 if (isset($_SESSION['loggedin'])) { //Si esta logeado mandarlo a /home
-	header('Location: home');
+  header('Location: home');
 }
-
-
 
 ?>
 
@@ -26,6 +21,7 @@ if (isset($_SESSION['loggedin'])) { //Si esta logeado mandarlo a /home
   <link rel="stylesheet" href="/public/css/sign-in.css">
   <!-- Custom styles for this template -->
   <link href="sign-in.css" rel="stylesheet">
+  
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
@@ -33,8 +29,17 @@ if (isset($_SESSION['loggedin'])) { //Si esta logeado mandarlo a /home
   <main class="form-signin w-100 m-auto">
     <a href="/signup" class="btn btn-lg btn-secondary" id="signup">Sign up</a>
 
+    <?php if (isset($_SESSION["error"])) { ?>
+      <div>
+        <p id="error">Error, incorrerct user or password.</p>
+      </div>
+    <?php } ?>
     <form action="/authenticate" method="post">
-      <img class="mb-4" src="/public/icons/bootstrap-logo.svg" alt="" width="72" height="57">
+      <img class="mb-4" src="/public/icons/bootstrap-logo.svg" alt="" width="72" height="57"><br>
+      <img class="mb-4" src="/public/icons/POSCO_blue.svg" alt="" width="200" height="50" id="posco_blue">
+      <img class="mb-4" src="/public/icons/POSCO_white.svg" alt="" width="200" height="50" id="posco_white">
+
+
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
@@ -56,6 +61,7 @@ if (isset($_SESSION['loggedin'])) { //Si esta logeado mandarlo a /home
       <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
     </form>
   </main>
+  <?php unset($_SESSION["error"]); ?>
   <?php include('partials/footer.php'); ?>
 
 </body>

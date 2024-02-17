@@ -9,12 +9,13 @@ if (!empty($_POST)) {
 
     //if input fields are empty go to /index page
     if (!isset($_POST["username"], $_POST["password"])) {
+        $_SESSION["error"] = "true";
         header('location: /index');
     } else {
         $username_form = $conn->real_escape_string($_POST["username"]);
         $password_form = $conn->real_escape_string($_POST["password"]);
 
-        $sql = "SELECT id, username, password from users WHERE username = ?;";
+        $sql = "SELECT id, username, password, user_type from users WHERE username = ?;";
 
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param('s', $username_form);
@@ -29,25 +30,21 @@ if (!empty($_POST)) {
                     $_SESSION['loggedin'] = TRUE;
                     $_SESSION['username'] = $_POST['username'];
                     $_SESSION['id'] = $rows[0]["id"];
+                    $_SESSION["user_type"] = $rows[0]["user_type"];
                     header('Location: /home');
                 } else {
+                    $_SESSION["error"] = "true";
                     header('location: /index');
                 }
             } else {
+                $_SESSION["error"] = "true";
                 header('location: /index');
             }
         } else {
+            $_SESSION["error"] = "true";
             header('location: /index');
         }
     }
-
-
-
-
-    // $sql = "SELECT password from users where username = ?;";
-    // $stmt = $conn->prepare($sql);
-    // $stmt->bind_param('s', ...[$username_form]);
-
 
     $conn->close();
 }

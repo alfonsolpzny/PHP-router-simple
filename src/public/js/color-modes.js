@@ -10,6 +10,7 @@
   const getStoredTheme = () => localStorage.getItem('theme')
   const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
+  //gets the preferend theme of browser
   const getPreferredTheme = () => {
     const storedTheme = getStoredTheme()
     if (storedTheme) {
@@ -19,15 +20,20 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   }
 
+  //Set theme geting as paramether ligth or dark
   const setTheme = theme => {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('data-bs-theme', 'dark')
+
     } else {
       document.documentElement.setAttribute('data-bs-theme', theme)
     }
+
   }
 
+  //set theme on load page
   setTheme(getPreferredTheme())
+
 
   const showActiveTheme = (theme, focus = false) => {
     const themeSwitcher = document.querySelector('#bd-theme')
@@ -55,12 +61,39 @@
     if (focus) {
       themeSwitcher.focus()
     }
+
+    //Script of condition if you want chague some element when you change theme in the toggle teme
+    if (theme == "dark") {
+      document.getElementById("php_dark").style.display = "none";
+      document.getElementById("php_light").style.display = "inline";
+    } else if (theme == "light") {
+      document.getElementById("php_dark").style.display = "inline";
+      document.getElementById("php_light").style.display = "none";
+    } else if (theme === 'auto') {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
+        document.getElementById("php_dark").style.display = "none";
+        document.getElementById("php_light").style.display = "inline";
+      } else {
+        document.getElementById("php_dark").style.display = "inline";
+        document.getElementById("php_light").style.display = "none";
+      }
+    }
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const storedTheme = getStoredTheme()
     if (storedTheme !== 'light' && storedTheme !== 'dark') {
       setTheme(getPreferredTheme())
+    }
+    //Conditons if ypu changue your browser settings to dark
+    if (getPreferredTheme() === "auto") {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
+        document.getElementById("php_dark").style.display = "none";
+        document.getElementById("php_light").style.display = "inline";
+      } else {
+        document.getElementById("php_dark").style.display = "inline";
+        document.getElementById("php_light").style.display = "none";
+      }
     }
   })
 
@@ -76,5 +109,8 @@
           showActiveTheme(theme, true)
         })
       })
+
   })
+
+
 })()
