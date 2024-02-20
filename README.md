@@ -3,7 +3,7 @@ En este proyecto se usa el fraework de Bootstrap 5 (v5.3) y se tomaron varios ej
 
 Además se usa la librería [PHP router](https://phprouter.com/) que consta de 3 archivos que ayudan crear un directorio de rutas muy fácil, la librería consta de tres archivos como:
 1. router.php
-2. router.php
+2. routes.php
 3. .htaccess
 
 En cual se cambió el nombre del archivo `routes.php` por `index.php`.
