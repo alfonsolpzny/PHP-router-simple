@@ -1,8 +1,13 @@
 <?php
-$DATABASE_HOST = "localhost";
-$DATABASE_USER = "root";
-$DATABASE_PASS = "toor";
-$DATABASE_NAME = "php_basic";
+require('../vendor/autoload.php');
+$dotenv = Dotenv\Dotenv::createImmutable('../');
+$dotenv->load();
+$DATABASE_HOST = $_ENV["DATABASE_HOST"];
+
+//$DATABASE_HOST = "localhost";
+$DATABASE_USER = $_ENV["DATABASE_USER"];
+$DATABASE_PASS = $_ENV["DATABASE_PASS"];
+$DATABASE_NAME = $_ENV["DATABASE_NAME"];
 
 // Create connection
 $conn = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);

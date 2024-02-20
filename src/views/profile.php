@@ -62,7 +62,7 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
         <div class="row">
             <div class="col">
-                <a class="btn btn-primary" href="/password">Changue password</a>
+                <a class="btn btn-primary" href="/password">Change password</a>
             </div>
         </div>
     </div>

@@ -3,14 +3,14 @@
         <!-- Two diferent icon for difrent themes -->
         <img src="/public/icons/php_dark.svg" alt="Logo" width="25" height="24" class="align-text-top" id="php_dark">
         <img src="/public/icons/php_ligth.svg" alt="Logo" width="25" height="24" class="align-text-top" id="php_light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Options</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

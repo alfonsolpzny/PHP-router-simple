@@ -36,10 +36,6 @@ if (isset($_SESSION['loggedin'])) { //Si esta logeado mandarlo a /home
     <?php } ?>
     <form action="/authenticate" method="post">
       <img class="mb-4" src="/public/icons/bootstrap-logo.svg" alt="" width="72" height="57"><br>
-      <img class="mb-4" src="/public/icons/POSCO_blue.svg" alt="" width="200" height="50" id="posco_blue">
-      <img class="mb-4" src="/public/icons/POSCO_white.svg" alt="" width="200" height="50" id="posco_white">
-
-
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
